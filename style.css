@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f7f0;
+    margin: 0;
+    color: #2d4a22;
+}
+
+header {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.stat-card h3 { margin: 0; font-size: 0.9rem; color: #666; }
+.stat-card p { font-size: 1.5rem; font-weight: bold; margin: 5px 0; }
+
+.game-area {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.action-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-top: 5px solid #4caf50;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover { background-color: #388e3c; }
+
+.btn-venda { background-color: #ff9800; }
+.btn-venda:hover { background-color: #f57c00; }
+
+.campo-visual {
+    margin-top: 20px;
+    font-size: 2rem;
+    min-height: 100px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.info-sustentavel {
+    margin-top: 30px;
+    background: #e8f5e9;
+    padding: 15px;
+    border-left: 5px solid #2e7d32;
+}

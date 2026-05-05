@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Agrinho 2026 - Melancia Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🍉 AgroSustentável: Simulador de Melancia</h1>
+        <p>Equilíbrio entre Produção e Meio Ambiente</p>
+    </header>
+
+    <main class="container">
+        <section class="stats">
+            <div class="stat-card">
+                <h3>Estoque</h3>
+                <p id="estoque">0</p> <span>unidades</span>
+            </div>
+            <div class="stat-card">
+                <h3>Carteira</h3>
+                <p>R$ <span id="dinheiro">50.00</span></p>
+            </div>
+            <div class="stat-card">
+                <h3>Sustentabilidade</h3>
+                <p id="sustentabilidade">100%</p>
+            </div>
+        </section>
+
+        <section class="game-area">
+            <div class="action-box">
+                <h2>Plantação</h2>
+                <p>Custo por semente: R$ 5,00</p>
+                <button onclick="plantar()">Plantar Melancia</button>
+                <div id="campo" class="campo-visual">
+                    </div>
+            </div>
+
+            <div class="action-box">
+                <h2>Mercado</h2>
+                <p>Preço de Venda: R$ 12,00</p>
+                <button onclick="vender()" class="btn-venda">Vender Safra</button>
+            </div>
+        </section>
+
+        <section class="info-sustentavel">
+            <h3>Dica de Sustentabilidade:</h3>
+            <p id="dica">Mantenha o solo nutrido! Plantar em excesso sem descanso reduz a qualidade.</p>
+        </section>
+    </main>
+
+    <script>
+        let estoque = 0;
+        let dinheiro = 50.00;
+        let sust = 100;
+
+        function plantar() {
+            if (dinheiro >= 5) {
+                dinheiro -= 5;
+                estoque += 1;
+                sust -= 2; // Produzir consome recursos ambientais
+                atualizarPlacar();
+                desenharMelancia();
+            } else {
+                alert("Dinheiro insuficiente para sementes!");
+            }
+        }
+
+        function vender() {
+            if (estoque > 0) {
+                let ganho = estoque * 12;
+                dinheiro += ganho;
+                estoque = 0;
+                sust += 5; // Vender e reinvestir permite cuidar do solo (exemplo lúdico)
+                if(sust > 100) sust = 100;
+                
+                document.getElementById('campo').innerHTML = ""; // Limpa o campo
+                atualizarPlacar();
+            }
+        }
+
+        function atualizarPlacar() {
+            document.getElementById('estoque').innerText = estoque;
+            document.getElementById('dinheiro').innerText = dinheiro.toFixed(2);
+            document.getElementById('sustentabilidade').innerText = sust + "%";
+        }
+
+        function desenharMelancia() {
+            const campo = document.getElementById('campo');
+            const melancia = document.createElement('span');
+            melancia.innerText = "🍉";
+            campo.appendChild(melancia);
+        }
+    </script>
+</body>
+</html>
