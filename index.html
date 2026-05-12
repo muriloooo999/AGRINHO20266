@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Agrinho 2026 - Melancia Sustentável</title>
+    <title>Simulador Agrinho 2026 - Fazenda Completa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>🍉 AgroSustentável: Simulador de Melancia</h1>
-        <p>Equilíbrio entre Produção e Meio Ambiente</p>
+        <h1>🌱 AgroSustentável: Simulador de Fazenda</h1>
+        <p>Gerencie sua fazenda, cultive diversos produtos e venda no mercado!</p>
     </header>
 
     <main class="container">
         <section class="stats">
             <div class="stat-card">
-                <h3>Estoque</h3>
-                <p id="estoque">0</p> <span>unidades</span>
+                <h3>Carteira</h3>
+                <p>R$ <span id="dinheiro">1000.00</span></p>
             </div>
             <div class="stat-card">
-                <h3>Carteira</h3>
-                <p>R$ <span id="dinheiro">50.00</span></p>
+                <h3>Funcionários</h3>
+                <p id="funcionarios">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Reputação</h3>
+                <p id="reputacao">50%</p>
             </div>
             <div class="stat-card">
                 <h3>Sustentabilidade</h3>
@@ -31,68 +35,42 @@
 
         <section class="game-area">
             <div class="action-box">
-                <h2>Plantação</h2>
-                <p>Custo por semente: R$ 5,00</p>
-                <button onclick="plantar()">Plantar Melancia</button>
-                <div id="campo" class="campo-visual">
-                    </div>
+                <h2>Hortas</h2>
+                <button onclick="criarHorta()">Criar Nova Horta (R$ 200)</button>
+                <div id="hortas" class="hortas-container"></div>
+            </div>
+
+            <div class="action-box">
+                <h2>Animais</h2>
+                <button onclick="comprarCurral()">Comprar Curral (R$ 500)</button>
+                <div id="currais" class="currais-container"></div>
             </div>
 
             <div class="action-box">
                 <h2>Mercado</h2>
-                <p>Preço de Venda: R$ 12,00</p>
-                <button onclick="vender()" class="btn-venda">Vender Safra</button>
+                <div id="mercado" class="mercado-container">
+                    <p>Aguardando clientes...</p>
+                </div>
+            </div>
+
+            <div class="action-box">
+                <h2>Processamento</h2>
+                <button onclick="processarSuco()">Processar Suco (Fruta)</button>
+                <div id="processamento" class="processamento-container"></div>
             </div>
         </section>
 
+        <section class="estoque">
+            <h3>Estoque</h3>
+            <div id="estoque-lista"></div>
+        </section>
+
         <section class="info-sustentavel">
-            <h3>Dica de Sustentabilidade:</h3>
-            <p id="dica">Mantenha o solo nutrido! Plantar em excesso sem descanso reduz a qualidade.</p>
+            <h3>Dica:</h3>
+            <p id="dica">Gerencie bem seus recursos para manter a sustentabilidade!</p>
         </section>
     </main>
 
-    <script>
-        let estoque = 0;
-        let dinheiro = 50.00;
-        let sust = 100;
-
-        function plantar() {
-            if (dinheiro >= 5) {
-                dinheiro -= 5;
-                estoque += 1;
-                sust -= 2; // Produzir consome recursos ambientais
-                atualizarPlacar();
-                desenharMelancia();
-            } else {
-                alert("Dinheiro insuficiente para sementes!");
-            }
-        }
-
-        function vender() {
-            if (estoque > 0) {
-                let ganho = estoque * 12;
-                dinheiro += ganho;
-                estoque = 0;
-                sust += 5; // Vender e reinvestir permite cuidar do solo (exemplo lúdico)
-                if(sust > 100) sust = 100;
-                
-                document.getElementById('campo').innerHTML = ""; // Limpa o campo
-                atualizarPlacar();
-            }
-        }
-
-        function atualizarPlacar() {
-            document.getElementById('estoque').innerText = estoque;
-            document.getElementById('dinheiro').innerText = dinheiro.toFixed(2);
-            document.getElementById('sustentabilidade').innerText = sust + "%";
-        }
-
-        function desenharMelancia() {
-            const campo = document.getElementById('campo');
-            const melancia = document.createElement('span');
-            melancia.innerText = "🍉";
-            campo.appendChild(melancia);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
